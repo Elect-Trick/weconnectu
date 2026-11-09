@@ -325,6 +325,8 @@ try {
     }, 3500)
 
 
+
+
 }
 }
 
@@ -332,7 +334,7 @@ async function deleteUser(id) {
   try {
 
     await new Promise((resolve,reject) => {
-      emit('deleteUser', selectedItem.value)
+      emit('deleteUser', { selectedItem: selectedItem.value, resolve, reject })
       
     })
     isDeleted.value  = true;
@@ -346,7 +348,7 @@ async function deleteUser(id) {
     setTimeout(() => {
       responseError.value = false
       isDeleted.value = false
-      
+
       
     }, 3500);
   }
