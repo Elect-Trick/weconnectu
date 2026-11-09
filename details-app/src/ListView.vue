@@ -9,6 +9,12 @@
     </Transition>
 
      <Transition name="fade" mode="out-in">
+      <div v-if="isDeleted" class="alert alert-success alert-dismissible" role="alert">
+        User has been marked as Deleted
+      </div>
+    </Transition>
+
+     <Transition name="fade" mode="out-in">
 
       <div v-if="responseError" class="alert alert-danger alert-dismissible" role="alert">
         Oops, something went wrong. Please contact our support team.
@@ -327,22 +333,25 @@ async function deleteUser(id) {
 
     await new Promise((resolve,reject) => {
       emit('deleteUser', selectedItem.value)
-      isSubmitted.value  = true;
+      isDeleted.value  = true;
       responseError.value = false;
       
     })
     
   } catch (error) {
-    isSubmitted.value = false
+    isDeleted.value = false
     responseError.value = true
     
   }finally{
     setTimeout(() => {
       responseError.value = false
-      isSubmitted.value = false
+      isDeleted.value = false
+      
       
     }, 3500);
   }
+
+  
 }
 
 
