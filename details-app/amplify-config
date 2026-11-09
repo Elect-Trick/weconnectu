@@ -1,0 +1,21 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - cd details-app
+        - pwd
+        - ls -la
+        - npm ci
+        - ls node_modules/.bin/vite
+    build:
+      commands:
+        - ./node_modules/.bin/vite build
+  artifacts:
+    baseDirectory: details-app/dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - details-app/node_modules/**/*
+      - details-app/.npm/**/*

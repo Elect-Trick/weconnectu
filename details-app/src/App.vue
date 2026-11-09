@@ -55,6 +55,8 @@ async function updateDetails({selectedItem,resolve,reject}) {
     
   } catch (error) {
     reject(error)
+  }finally{
+    fetchUsers()
   }
   
 }
@@ -69,6 +71,8 @@ async function updateDetails({selectedItem,resolve,reject}) {
     } catch (error) {
       reject(error)
       
+    }finally{
+      fetchUsers()
     }
     
   }
