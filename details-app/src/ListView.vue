@@ -327,17 +327,19 @@ async function deleteUser(id) {
 
     await new Promise((resolve,reject) => {
       emit('deleteUser', selectedItem.value)
-      isDeleted.value  = true;
+      isSubmitted.value  = true;
+      responseError.value = false;
       
     })
     
   } catch (error) {
+    isSubmitted.value = false
     responseError.value = true
     
   }finally{
     setTimeout(() => {
       responseError.value = false
-      isDeleted.value = false
+      isSubmitted.value = false
       
     }, 3500);
   }
